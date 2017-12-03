@@ -3,6 +3,9 @@ import java.util.*;
 public class SetUpGame{
 
   public static final char seaSymbol = '~';
+  public static final char shipSymbol = 'o';
+  public static final char hitSymbol = '*';
+  public static final char missSymbol = 'X';
   static char[][] userBoard = new char[10][10];
   static char[][] pcBoard = new char[10][10];
   static ArrayList<Integer> size = new ArrayList<>();
@@ -62,12 +65,12 @@ public class SetUpGame{
             }
 
             for (int k = location[0][1]; k <= location[1][1] ; k++) {
-              if (userBoard[k - 1][location[0][0] - 1] == 'o') {
+              if (userBoard[k - 1][location[0][0] - 1] == shipSymbol) {
                 System.out.println("please re-enter the location");
                 fail = true;
                 break;
               }
-              userBoard[k - 1][location[0][0] - 1] = 'o';
+              userBoard[k - 1][location[0][0] - 1] = shipSymbol;
             }
 
 
@@ -78,19 +81,19 @@ public class SetUpGame{
               continue;
             }
             for (int l = location[0][0]; l <= location[1][0] ; l++) {
-              if (userBoard[l - 1][location[0][0] - 1] == 'o') {
+              if (userBoard[l - 1][location[0][0] - 1] == shipSymbol) {
                 System.out.println("please re-enter the location");
                 fail = true;
                 break;
               }
-              userBoard[location[0][1] - 1][l - 1] = 'o';
+              userBoard[location[0][1] - 1][l - 1] = shipSymbol;
             }
           }
 
           if (fail) {
             continue;
           }
-          
+
           size.remove(0);
           printGraph(userBoard, pcBoard);
           count++;
