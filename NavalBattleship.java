@@ -18,9 +18,11 @@ public class NavalBattleship {
         System.out.println("Welcome to Naval Battle Field!");
 
         while (gameContinue) {
+
             Scanner scanner = new Scanner(System.in);
+            System.out.println("Do you want to start a new game?");
             String input = scanner.nextLine();
-            if (input.equals("I don't want to play anymore.")) {
+            if (input.equals("No.")) {
                 break;
             }
             else {
@@ -45,7 +47,7 @@ public class NavalBattleship {
                     //robotAttack();
                     break;
                 }
-                break;
+
             }
 
 
@@ -81,7 +83,6 @@ public class NavalBattleship {
 
             robot_field[x][y] = shipSymbol;
 
-            System.out.println("dir = " + dir);
             if (dir == 0){
 
                 for (int k = 1; k < shipLen[i]; k++) {
@@ -130,7 +131,7 @@ public class NavalBattleship {
 
             }
         }
-        System.out.println("coutn = " + count);
+
     }
     private List<Integer> checkValid(int shipLen, int x, int y) {
         List<Integer> list = new ArrayList<>();
