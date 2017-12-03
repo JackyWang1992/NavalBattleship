@@ -68,8 +68,8 @@ public class SetUpGame{
                 break;
               }
               userBoard[k - 1][location[0][0] - 1] = 'o';
-              size.remove(0);
             }
+
 
           } else {
             int length = location[1][0] - location[0][0] + 1;
@@ -84,9 +84,14 @@ public class SetUpGame{
                 break;
               }
               userBoard[location[0][1] - 1][l - 1] = 'o';
-              size.remove(0);
             }
           }
+
+          if (fail) {
+            continue;
+          }
+          
+          size.remove(0);
           printGraph(userBoard, pcBoard);
           count++;
       } while (count < 5 || fail == true);
