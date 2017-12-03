@@ -29,28 +29,25 @@
 */
 
 
-public class UserAttack(char[][] initialPcBoard, char[][] userBoard, char[][] pcBoard){
+public static void userAttack(){
     Scanner sc = new Scanner(System.in);
     boolean isBoat = true;
     while (isBoat){
       System.out.println("Please enter the x coordinate you want to attack :\n");
-      int x = sc.nextInt();
+      int x = sc.nextInt() - 1;
       System.out.println("Please enter the y coordinate you want to attack :\n");
-      int y = sc.nextInt();
-      sc.close();
-      for (int i = 0; i < pcBoard.length; i++){
-        for (int j = 0; j < pcBoard[0].length; j++){
-          if (initialPcBoard[x][y] == shipSymbol){
-            pcBoard[x][y] = hitSymbol;
-          } else if (initialPcBoard[x][y] == seaSymbol){
-            pcBoard[x][y] = missSymbol;
-            isBoat = false;
-            if (isEnd()){
-              break;
-            }
-          }
-        }
+      int y = sc.nextInt() - 1;
+
+
+      if (initialPcBoard[x][y] == shipSymbol){
+        pcBoard[x][y] = hitSymbol;
+      } else if (initialPcBoard[x][y] == seaSymbol){
+        pcBoard[x][y] = missSymbol;
+        isBoat = false;
+        // if (isEnd()){
+        //   break;
+        // }
       }
       printGraph(userBoard, pcBoard);
     }
-}
+ }
