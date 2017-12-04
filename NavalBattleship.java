@@ -11,9 +11,11 @@ public class NavalBattleship {
     private char shipSymbol = 'o';
     private char hitSymbol = '*';
     private char missSymbol = 'x';
-    //private int[] shipLen = {2, 3, 3, 4, 5};
-    private int[] shipLen = {5};
-    private int totalPoints = 5;
+
+    private int[] shipLen = {2, 3, 3, 4, 5};
+    //private int[] shipLen = {5};
+    private int totalPoints = 17;
+
     static ArrayList<Integer> size;
 
     char[][] fqcurRecord;
@@ -48,6 +50,7 @@ public class NavalBattleship {
                 showPCBoard = new char[10][10];
 
 
+
                 fqcurRecord = new char[10][10];
                 isRandom = true;
                 isTry = true;
@@ -70,7 +73,9 @@ public class NavalBattleship {
                 userStart(); //call
                 setupRobot();
 
-                printGraph(userBoard, pcBoard);
+
+                //printGraph(userBoard, pcBoard);
+
                 fqcurRecord = userBoard;
 
                 while (roundContinue) {
@@ -332,8 +337,10 @@ public class NavalBattleship {
                 } while (location[i][1] < 1 || location[i][1] > 10);
             }
 
+
             if (location[1][0] == location[0][0]) {
                 int length = location[1][1] - location[0][1] + 1;
+
 
                 if (length != size.get(0)) {
                     System.out.println("please re-enter the location");
