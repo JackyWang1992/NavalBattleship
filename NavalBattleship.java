@@ -1,22 +1,22 @@
 import java.util.*;
 
 public class NavalBattleship {
-    private boolean gameContinue = true;
-    private boolean roundContinue = true;
-    private char[][] pcBoard;
-    private char[][] userBoard;
-    private char[][] showPCBoard;
+    private static boolean gameContinue = true;
+    private static boolean roundContinue = true;
+    private static char[][] pcBoard;
+    private static char[][] userBoard;
+    private static char[][] showPCBoard;
     //private char[][] uI_field;
-    private char seaSymbol = '~';
-    private char shipSymbol = 'o';
-    private char hitSymbol = '*';
-    private char missSymbol = 'x';
+    private final char seaSymbol = '~';
+    private final char shipSymbol = 'o';
+    private final char hitSymbol = '*';
+    private final char missSymbol = 'x';
 
-    private int[] shipLen = {2, 3, 3, 4, 5};
+    private final int[] shipLen = {2, 3, 3, 4, 5};
     // private int[] shipLen = {5};
     // private int totalPoints = 5;
-    private int totalPoints = 17;
-    static ArrayList<Integer> size;
+    private final int totalPoints = 17;
+    private static ArrayList<Integer> size;
 
     char[][] fqcurRecord;
     boolean isRandom;
