@@ -13,10 +13,13 @@ public class NavalBattleship {
     private char missSymbol = 'x';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int[] shipLen = {2, 3, 3, 4, 5};
     // private int[] shipLen = {5};
     private int totalPoints = 5;
 =======
+=======
+>>>>>>> 3d2922f1cff90e5351a0a470872bdf9c2dabb195
 =======
 >>>>>>> 3d2922f1cff90e5351a0a470872bdf9c2dabb195
 
@@ -25,6 +28,9 @@ public class NavalBattleship {
     private int totalPoints = 17;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3d2922f1cff90e5351a0a470872bdf9c2dabb195
+=======
 >>>>>>> 3d2922f1cff90e5351a0a470872bdf9c2dabb195
 =======
 >>>>>>> 3d2922f1cff90e5351a0a470872bdf9c2dabb195
