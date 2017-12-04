@@ -14,9 +14,7 @@ public class NavalBattleship {
 
     private int[] shipLen = {2, 3, 3, 4, 5};
     // private int[] shipLen = {5};
-    private int totalPoints = 5;
-    private int[] shipLen = {2, 3, 3, 4, 5};
-    //private int[] shipLen = {5};
+    // private int totalPoints = 5;
     private int totalPoints = 17;
     static ArrayList<Integer> size;
 
