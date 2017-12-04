@@ -11,9 +11,9 @@ public class NavalBattleship {
     private char shipSymbol = 'o';
     private char hitSymbol = '*';
     private char missSymbol = 'x';
-    //private int[] shipLen = {2, 3, 3, 4, 5};
-    private int[] shipLen = {5};
-    private int totalPoints = 5;
+    private int[] shipLen = {2, 3, 3, 4, 5};
+    //private int[] shipLen = {5};
+    private int totalPoints = 17;
     static ArrayList<Integer> size;
 
     char[][] fqcurRecord;
@@ -70,7 +70,7 @@ public class NavalBattleship {
                 userStart(); //call
                 setupRobot();
 
-                printGraph(userBoard, pcBoard);
+                //printGraph(userBoard, pcBoard);
                 fqcurRecord = userBoard;
 
                 while (roundContinue) {
