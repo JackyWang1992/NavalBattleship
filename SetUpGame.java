@@ -191,8 +191,10 @@ public static void userAttack(){
       int x = sc.nextInt() - 1;
       System.out.println("Please enter the y coordinate you want to attack :\n");
       int y = sc.nextInt() - 1;
-
-
+      if (x < 0 || x > 9 || y < 0 || y > 9){
+        System.out.println("Invalid input, please enter the coordinates again\n");
+        continue;
+      }
       if (initialPcBoard[x][y] == shipSymbol){
         pcBoard[x][y] = hitSymbol;
       } else if (initialPcBoard[x][y] == seaSymbol){
