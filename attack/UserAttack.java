@@ -1,7 +1,11 @@
 package attack;
+import game.NavalBattleship;
+import print.PrintGraph;
+
+import java.util.Scanner;
 
 public class UserAttack{
-  private void userAttack() {
+  public static void userAttack() {
       Scanner sc = new Scanner(System.in);
       boolean isBoat = true;
       while (isBoat){
@@ -11,19 +15,19 @@ public class UserAttack{
           int y = sc.nextInt() - 1;
 
 
-          if (pcBoard[x][y] == shipSymbol){
-              pcBoard[x][y] = hitSymbol;
-              showPCBoard[x][y] = hitSymbol;
-          } else if (pcBoard[x][y] == seaSymbol){
-              pcBoard[x][y] = missSymbol;
-              showPCBoard[x][y] = missSymbol;
+          if (NavalBattleship.pcBoard[x][y] == NavalBattleship.shipSymbol){
+              NavalBattleship.pcBoard[x][y] = NavalBattleship.hitSymbol;
+              NavalBattleship.showPCBoard[x][y] = NavalBattleship.hitSymbol;
+          } else if (NavalBattleship.pcBoard[x][y] == NavalBattleship.seaSymbol){
+              NavalBattleship.pcBoard[x][y] = NavalBattleship.missSymbol;
+              NavalBattleship.showPCBoard[x][y] = NavalBattleship.missSymbol;
               isBoat = false;
 
           }
-          if (isEnd(pcBoard)){
+          if (NavalBattleship.isEnd(NavalBattleship.pcBoard)){
               break;
           }
-          printGraph(userBoard, showPCBoard);
+          PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
       }
   }
 }

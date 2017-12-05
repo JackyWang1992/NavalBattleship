@@ -1,135 +1,136 @@
 package attack;
-
+import game.NavalBattleship;
+import print.PrintGraph;
 public class RobotAttack{
-  public boolean robotAttack() {
+  public static boolean robotAttack() {
       int x, y;
       //是否随机打
-      if (isRandom) {
+      if (NavalBattleship.isRandom) {
           do {
               x = (int)(Math.random() * 10);
               y = (int)(Math.random() * 10);
-          } while (userBoard[x][y] == hitSymbol || userBoard[x][y] == missSymbol);
+          } while (NavalBattleship.userBoard[x][y] == NavalBattleship.hitSymbol || NavalBattleship.userBoard[x][y] == NavalBattleship.missSymbol);
 
-          if (userBoard[x][y] == seaSymbol) {
-              userBoard[x][y] = missSymbol;
-              printGraph(userBoard, showPCBoard);
+          if (NavalBattleship.userBoard[x][y] == NavalBattleship.seaSymbol) {
+              NavalBattleship.userBoard[x][y] = NavalBattleship.missSymbol;
+              PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
               //设置各种参数
-              isRandom = true;
+              NavalBattleship.isRandom = true;
               return false;
           } else {
-              userBoard[x][y] = hitSymbol;
-              printGraph(userBoard, showPCBoard);
-              isRandom = false;
-              isTry = true;
-              countDir = new boolean[4];
-              fqprex = x;
-              fqprey = y;
+              NavalBattleship.userBoard[x][y] = NavalBattleship.hitSymbol;
+              PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
+              NavalBattleship.isRandom = false;
+              NavalBattleship.isTry = true;
+              NavalBattleship.countDir = new boolean[4];
+              NavalBattleship.fqprex = x;
+              NavalBattleship.fqprey = y;
               return true;
           }
           //不随机
       } else {
           //尝试四个方向
-          if (isTry) {
+          if (NavalBattleship.isTry) {
               int ig = 0;
               //记录方向到第几个
               for (ig = 0; ig < 4; ig++) {
-                  if (!countDir[ig]) {
+                  if (!NavalBattleship.countDir[ig]) {
                       break;
                   }
               }
               if (ig == 4) {
                   ig = 3;
               }
-              x = fqprex + fqdir[ig][0];
-              y = fqprey + fqdir[ig][1];
+              x = NavalBattleship.fqprex + NavalBattleship.fqdir[ig][0];
+              y = NavalBattleship.fqprey + NavalBattleship.fqdir[ig][1];
               //重复的时候随机打
-              if (x < 0 || x > 9 || y < 0 || y > 9 || userBoard[x][y] == hitSymbol || userBoard[x][y] == missSymbol) {
+              if (x < 0 || x > 9 || y < 0 || y > 9 || NavalBattleship.userBoard[x][y] == NavalBattleship.hitSymbol || NavalBattleship.userBoard[x][y] == NavalBattleship.missSymbol) {
                   do {
                       x = (int)(Math.random() * 10);
                       y = (int)(Math.random() * 10);
-                  } while (userBoard[x][y] == hitSymbol || userBoard[x][y] == missSymbol);
+                  } while (NavalBattleship.userBoard[x][y] == NavalBattleship.hitSymbol || NavalBattleship.userBoard[x][y] == NavalBattleship.missSymbol);
 
-                  if (userBoard[x][y] == seaSymbol) {
-                      userBoard[x][y] = missSymbol;
-                      printGraph(userBoard, showPCBoard);
-                      isRandom = true;
+                  if (NavalBattleship.userBoard[x][y] == NavalBattleship.seaSymbol) {
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.missSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
+                      NavalBattleship.isRandom = true;
                       return false;
                   } else {
-                      userBoard[x][y] = hitSymbol;
-                      printGraph(userBoard, showPCBoard);
-                      isRandom = false;
-                      isTry = true;
-                      countDir = new boolean[4];
-                      fqprex = x;
-                      fqprey = y;
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.hitSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
+                      NavalBattleship.isRandom = false;
+                      NavalBattleship.isTry = true;
+                      NavalBattleship.countDir = new boolean[4];
+                      NavalBattleship.fqprex = x;
+                      NavalBattleship.fqprey = y;
                       return true;
                   }
                   //不重复找方向
               } else {
-                  if (userBoard[x][y] == seaSymbol) {
-                      userBoard[x][y] = missSymbol;
-                      printGraph(userBoard, showPCBoard);
+                  if (NavalBattleship.userBoard[x][y] == NavalBattleship.seaSymbol) {
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.missSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
                       for (int i = 0; i < 4; i++) {
-                          if (!countDir[i]) {
-                              countDir[i] = true;
+                          if (!NavalBattleship.countDir[i]) {
+                              NavalBattleship.countDir[i] = true;
                           }
                       }
-                      isRandom = false;
-                      isTry = true;
+                      NavalBattleship.isRandom = false;
+                      NavalBattleship.isTry = true;
                       return false;
                   } else {
-                      userBoard[x][y] = hitSymbol;
-                      printGraph(userBoard, showPCBoard);
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.hitSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
                       //设置参数进入continue模式
-                      foundDir = ig;
-                      isRandom = false;
-                      isTry = false;
-                      fqprex = x;
-                      fqprey = y;
+                      NavalBattleship.foundDir = ig;
+                      NavalBattleship.isRandom = false;
+                      NavalBattleship.isTry = false;
+                      NavalBattleship.fqprex = x;
+                      NavalBattleship.fqprey = y;
                       return true;
                   }
               }
               //continue模式
           } else {
-              x = fqprex + fqdir[foundDir][0];
-              y = fqprey + fqdir[foundDir][1];
+              x = NavalBattleship.fqprex + NavalBattleship.fqdir[NavalBattleship.foundDir][0];
+              y = NavalBattleship.fqprey + NavalBattleship.fqdir[NavalBattleship.foundDir][1];
               //重复的时候随机打
-              if (x < 0 || x > 9 || y < 0 || y > 9 || userBoard[x][y] == hitSymbol || userBoard[x][y] == missSymbol) {
+              if (x < 0 || x > 9 || y < 0 || y > 9 || NavalBattleship.userBoard[x][y] == NavalBattleship.hitSymbol || NavalBattleship.userBoard[x][y] == NavalBattleship.missSymbol) {
                   do {
                       x = (int)(Math.random() * 10);
                       y = (int)(Math.random() * 10);
-                  } while (userBoard[x][y] == hitSymbol || userBoard[x][y] == missSymbol);
+                  } while (NavalBattleship.userBoard[x][y] == NavalBattleship.hitSymbol || NavalBattleship.userBoard[x][y] == NavalBattleship.missSymbol);
 
-                  if (userBoard[x][y] == seaSymbol) {
-                      userBoard[x][y] = missSymbol;
-                      printGraph(userBoard, showPCBoard);
-                      isRandom = true;
+                  if (NavalBattleship.userBoard[x][y] == NavalBattleship.seaSymbol) {
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.missSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
+                      NavalBattleship.isRandom = true;
                       return false;
                   } else {
-                      userBoard[x][y] = hitSymbol;
-                      printGraph(userBoard, showPCBoard);
-                      isRandom = false;
-                      isTry = true;
-                      countDir = new boolean[4];
-                      fqprex = x;
-                      fqprey = y;
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.hitSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
+                      NavalBattleship.isRandom = false;
+                      NavalBattleship.isTry = true;
+                      NavalBattleship.countDir = new boolean[4];
+                      NavalBattleship.fqprex = x;
+                      NavalBattleship.fqprey = y;
                       return true;
                   }
               } else {
-                  if (userBoard[x][y] == seaSymbol) {
-                      userBoard[x][y] = missSymbol;
-                      printGraph(userBoard, showPCBoard);
+                  if (NavalBattleship.userBoard[x][y] == NavalBattleship.seaSymbol) {
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.missSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
                       //设置参数继续寻找
-                      isRandom = false;
-                      isTry = false;
-                      fqprex = x;
-                      fqprey = y;
+                      NavalBattleship.isRandom = false;
+                      NavalBattleship.isTry = false;
+                      NavalBattleship.fqprex = x;
+                      NavalBattleship.fqprey = y;
                       return false;
                   } else {
-                      userBoard[x][y] = hitSymbol;
-                      printGraph(userBoard, showPCBoard);
+                      NavalBattleship.userBoard[x][y] = NavalBattleship.hitSymbol;
+                      PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
                       //设置参数进入随机模式
-                      isRandom = true;
+                      NavalBattleship.isRandom = true;
                       return false;
                   }
               }

@@ -1,6 +1,6 @@
 package print;
 
-public class printGraph{
+public class PrintGraph{
   public static void printGraph(char[][] userBoard, char[][] pcBoard){
 
       printSea(pcBoard);

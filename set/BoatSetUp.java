@@ -1,35 +1,41 @@
 package set;
 
+import game.NavalBattleship;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class BoatSetUp{
-  private void setupRobot() {
+  public static void setupRobot() {
       //boolean[][] visited = new boolean[10][10];
       int count = 0;
-      for (int i = 0; i < shipLen.length; i++) {
+      for (int i = 0; i < NavalBattleship.shipLen.length; i++) {
           Random rdm = new Random();
           boolean contin = false;
           int x = rdm.nextInt(10);
           int y = rdm.nextInt(10);
-          List<Integer> posDir = checkValid(shipLen[i], x, y);
+          List<Integer> posDir = checkValid(NavalBattleship.shipLen[i], x, y);
 
-          while (pcBoard[x][y] == shipSymbol && posDir.size() == 0) {
+          while (NavalBattleship.pcBoard[x][y] == NavalBattleship.shipSymbol && posDir.size() == 0) {
 
               x = rdm.nextInt(10);
               y = rdm.nextInt(10);
-              posDir = checkValid(shipLen[i], x, y);
+              posDir = checkValid(NavalBattleship.shipLen[i], x, y);
           }
           int dir = rdm.nextInt(4);
           while (!posDir.contains(dir)) {
               dir = rdm.nextInt(4);
           }
 
-          pcBoard[x][y] = shipSymbol;
+          NavalBattleship.pcBoard[x][y] = NavalBattleship.shipSymbol;
 
           if (dir == 0){
 
-              for (int k = 1; k < shipLen[i]; k++) {
+              for (int k = 1; k < NavalBattleship.shipLen[i]; k++) {
                   count++;
 
-                  pcBoard[x][y - k] = shipSymbol;
+                  NavalBattleship.pcBoard[x][y - k] = NavalBattleship.shipSymbol;
                   //visited[x][y - k] = true;
 
               }
@@ -39,10 +45,10 @@ public class BoatSetUp{
           //down
           else if (dir == 1) {
 
-              for (int k = 1; k < shipLen[i]; k++) {
+              for (int k = 1; k < NavalBattleship.shipLen[i]; k++) {
                   count++;
 
-                  pcBoard[x][y + k] = shipSymbol;
+                  NavalBattleship.pcBoard[x][y + k] = NavalBattleship.shipSymbol;
                   //visited[x][y + k] = true;
 
               }
@@ -52,20 +58,20 @@ public class BoatSetUp{
           //right
           else if (dir == 2) {
 
-              for (int k = 1; k < shipLen[i]; k++) {
+              for (int k = 1; k < NavalBattleship.shipLen[i]; k++) {
                   count++;
 
-                  pcBoard[x + k][y] = shipSymbol;
+                  NavalBattleship.pcBoard[x + k][y] = NavalBattleship.shipSymbol;
                   //visited[x + k][y] = true;
 
               }
           }
           else if(dir == 3){
 
-              for (int k = 1; k < shipLen[i]; k++) {
+              for (int k = 1; k < NavalBattleship.shipLen[i]; k++) {
                   count++;
 
-                  pcBoard[x - k][y] = shipSymbol;
+                  NavalBattleship.pcBoard[x - k][y] = NavalBattleship.shipSymbol;
                   //visited[x - k][y] = true;
 
               }
@@ -74,7 +80,7 @@ public class BoatSetUp{
       }
 
   }
-  private List<Integer> checkValid(int shipLen, int x, int y) {
+  private static List<Integer> checkValid(int shipLen, int x, int y) {
       List<Integer> list = new ArrayList<>();
       for (int dir = 0; dir < 4; dir++) {
           if (checkDir(dir, shipLen, x, y))
@@ -83,14 +89,14 @@ public class BoatSetUp{
 
       return list;
   }
-  private boolean checkDir(int dir, int shipLen, int x, int y) {
+  private static boolean checkDir(int dir, int shipLen, int x, int y) {
       switch (dir) {
           //go up
           case 0: {
               if (y - shipLen - 1 < 0) return false;
               for (int k = 1; k < shipLen; k++) {
 
-                  if (pcBoard[x][y - k] == shipSymbol)
+                  if (NavalBattleship.pcBoard[x][y - k] == NavalBattleship.shipSymbol)
                       return false;
 
               }
@@ -98,10 +104,10 @@ public class BoatSetUp{
           }
           //down
           case 1: {
-              if (y + shipLen - 1 >= pcBoard.length)
+              if (y + shipLen - 1 >= NavalBattleship.pcBoard.length)
                   return false;
               for (int k = 1; k < shipLen; k++) {
-                  if (pcBoard[x][y + k] == shipSymbol)
+                  if (NavalBattleship.pcBoard[x][y + k] == NavalBattleship.shipSymbol)
                       return false;
 
               }
@@ -109,11 +115,11 @@ public class BoatSetUp{
           }
           //right
           case 2: {
-              if (x + shipLen - 1 >= pcBoard.length)
+              if (x + shipLen - 1 >= NavalBattleship.pcBoard.length)
                   return false;
               for (int k = 1; k < shipLen; k++) {
 
-                  if (pcBoard[x + k][y] == shipSymbol)
+                  if (NavalBattleship.pcBoard[x + k][y] == NavalBattleship.shipSymbol)
                       return false;
 
               }
@@ -124,7 +130,7 @@ public class BoatSetUp{
               if (x - shipLen - 1 < 0) return false;
               for (int k = 1; k < shipLen; k++) {
 
-                  if (pcBoard[x - k][y] == shipSymbol)
+                  if (NavalBattleship.pcBoard[x - k][y] == NavalBattleship.shipSymbol)
                       return false;
 
               }
