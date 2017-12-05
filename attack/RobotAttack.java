@@ -4,6 +4,7 @@ import print.PrintGraph;
 public class RobotAttack{
   public boolean robotAttack() {
       int x, y;
+      int test;
       //是否随机打
       if (NavalBattleship.isRandom) {
           do {
