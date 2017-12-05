@@ -2,8 +2,8 @@ package game;
 import java.util.*;
 import set.*;
 import attack.*;
-import print.*;
 
+import static print.PrintGraph.printGraph;
 
 public class NavalBattleship {
     public static boolean gameContinue = true;
@@ -31,6 +31,7 @@ public class NavalBattleship {
     public static int fqprex;
     public static int fqprey;
     public static int foundDir;
+
 
 
 
@@ -73,18 +74,25 @@ public class NavalBattleship {
                     }
 
                 }
+                printGraph(userBoard, pcBoard);
+                UserSetUp userSetUp = new UserSetUp();
+                userSetUp.userStart(); //call
+
+                BoatSetUp boatSetUp = new BoatSetUp();
+                boatSetUp.setupRobot();
+
+
                 //printGraph(userBoard, pcBoard);
-                PrintGraph.printGraph(userBoard, pcBoard);
-                UserSetUp.userStart();
-                BoatSetUp.setupRobot();
 
                 fqcurRecord = userBoard;
 
                 while (roundContinue) {
                     boolean index;
-                    UserAttack.userAttack();
+                    UserAttack userAttack = new UserAttack();
+                    userAttack.userAttack();
                     do {
-                        index = RobotAttack.robotAttack();
+                        RobotAttack robotAttack = new RobotAttack();
+                        index = robotAttack.robotAttack();
                         if (index)
                             System.out.println("PC has hit your ship!");
                     }while (index);
@@ -103,11 +111,21 @@ public class NavalBattleship {
                 }
 
             }
+
+
+
         }
+
+
+
+
+
 
     }
 
-    
+
+
+
     public static boolean isEnd(char[][] board) {
         int count = 0;
         for (int i = 0; i < board.length; i++) {

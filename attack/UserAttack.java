@@ -5,7 +5,7 @@ import print.PrintGraph;
 import java.util.Scanner;
 
 public class UserAttack{
-  public static void userAttack() {
+  public void userAttack() {
       Scanner sc = new Scanner(System.in);
       boolean isBoat = true;
       while (isBoat){

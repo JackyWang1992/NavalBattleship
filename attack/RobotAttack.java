@@ -2,7 +2,7 @@ package attack;
 import game.NavalBattleship;
 import print.PrintGraph;
 public class RobotAttack{
-  public static boolean robotAttack() {
+  public boolean robotAttack() {
       int x, y;
       //是否随机打
       if (NavalBattleship.isRandom) {

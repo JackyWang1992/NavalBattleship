@@ -12,7 +12,7 @@ import static print.PrintGraph.printGraph;
 public class UserSetUp {
 
 
-    public static void userStart(){
+    public void userStart(){
         ArrayList<Integer> size = new ArrayList<>();
         // set up the sea char
         int count = 0;
@@ -105,3 +105,5 @@ public class UserSetUp {
         //char[][] initialPcBoard, char[][] userBoard, char[][] pcBoard
     }
     }
+
+    

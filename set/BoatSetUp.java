@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BoatSetUp{
-  public static void setupRobot() {
+  public void setupRobot() {
       //boolean[][] visited = new boolean[10][10];
       int count = 0;
       for (int i = 0; i < NavalBattleship.shipLen.length; i++) {
@@ -80,7 +80,7 @@ public class BoatSetUp{
       }
 
   }
-  private static List<Integer> checkValid(int shipLen, int x, int y) {
+  private List<Integer> checkValid(int shipLen, int x, int y) {
       List<Integer> list = new ArrayList<>();
       for (int dir = 0; dir < 4; dir++) {
           if (checkDir(dir, shipLen, x, y))
@@ -89,7 +89,7 @@ public class BoatSetUp{
 
       return list;
   }
-  private static boolean checkDir(int dir, int shipLen, int x, int y) {
+  private boolean checkDir(int dir, int shipLen, int x, int y) {
       switch (dir) {
           //go up
           case 0: {
