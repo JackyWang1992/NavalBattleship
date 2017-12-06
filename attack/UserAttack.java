@@ -18,16 +18,16 @@ public class UserAttack{
           if (NavalBattleship.pcBoard[x][y] == NavalBattleship.shipSymbol){
               NavalBattleship.pcBoard[x][y] = NavalBattleship.hitSymbol;
               NavalBattleship.showPCBoard[x][y] = NavalBattleship.hitSymbol;
+              System.out.println("You have hit PC's ship! You are going to hit again.");
           } else if (NavalBattleship.pcBoard[x][y] == NavalBattleship.seaSymbol){
               NavalBattleship.pcBoard[x][y] = NavalBattleship.missSymbol;
               NavalBattleship.showPCBoard[x][y] = NavalBattleship.missSymbol;
               isBoat = false;
-
+              System.out.println("You didin't hit PC's shit. It's PC's turn.");
           }
           if (NavalBattleship.isEnd(NavalBattleship.pcBoard)){
               break;
           }
-
           PrintGraph.printGraph(NavalBattleship.userBoard, NavalBattleship.showPCBoard);
       }
   }
