@@ -8,11 +8,19 @@ import game.NavalBattleship;
 import javax.print.attribute.standard.MediaSize;
 
 import print.PrintGraph;
-
+/**
+  this class setup the userBoard
+  put 5 different ships with length: 2, 3, 3, 4, 5
+  then print the "all set" message
+*/
 public class UserSetUp {
     private static ArrayList<Integer> size;
     private static Scanner sc;
 
+    /**
+      this method start the userSetUp
+      finally will tell you "you are all set"
+    */
     public void userStart(){
         size = new ArrayList<>();
         // set up the sea char
@@ -23,11 +31,11 @@ public class UserSetUp {
         size.add(3);
         size.add(4);
         size.add(5);
-
+        // call the setUpSea method for userBoard and showPCBoard
         setUpSea(NavalBattleship.userBoard);
 
         setUpSea(NavalBattleship.showPCBoard);
-
+        // start to put five different ships
         do {
             fail = false;
             sc = new Scanner(System.in);
@@ -41,12 +49,15 @@ public class UserSetUp {
             size.remove(0);
             count++;
         } while (count < NavalBattleship.shipLen.length || fail == true);
-        // set up the location
+        // print the final information
         System.out.println("Baby! You are all set! ");
-        //userAttack();
-        //char[][] initialPcBoard, char[][] userBoard, char[][] pcBoard
     }
 
+    /**
+      this method setUpSea put seaSymbol in a char array
+      make the array like the sea
+      @param board a char array to put the seaSymbol "~""
+    */
     public static void setUpSea(char[][] board){
       for (int i = 0; i < board.length; i++){
           for (int j = 0; j < board[i].length; j++){
@@ -54,7 +65,13 @@ public class UserSetUp {
           }
       }
     }
-
+    /**
+     this method set the location of one ship and check if the input is legal
+     we have to prevent the user to enter non-integer or integers which too
+     big or too small
+     @param location the integer 2D array to put the coordinate of two ends of ship
+     @return the 2D array of location which represent the ship's location
+    */
     public static int[][] setUpLocation(int[][] location){
 
       for (int i = 0; i < location.length; i++) {
@@ -93,6 +110,14 @@ public class UserSetUp {
       return location;
     }
 
+    /**
+      this method put the ship into the userBoard, which set ships by change seaSymbol
+      to shipSymbol in the userBoard.
+      @param userBoard the 2D char array which represent users' sea
+      @param location the 2D integer array which represent the ship's location
+      @param fail the boolean which decide whether to input again
+      @return the boolean which decide whether to input again
+    */
     public static boolean setUpOneShip(char[][] userBoard, int[][] location, boolean fail){
 
       if (location[1][0] == location[0][0]) {
