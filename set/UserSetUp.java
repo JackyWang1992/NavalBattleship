@@ -59,6 +59,7 @@ public class UserSetUp {
       @param board a char array to put the seaSymbol "~""
     */
     public static void setUpSea(char[][] board){
+      // set up the userBoard with seaSymbol
       for (int i = 0; i < board.length; i++){
           for (int j = 0; j < board[i].length; j++){
               board[i][j] = NavalBattleship.seaSymbol;
@@ -81,9 +82,12 @@ public class UserSetUp {
             System.out.printf("Please enter the tail of ship of size %d:%n", size.get(0));
           }
           boolean isContinue;
+          // set up the ship coordinates
+          // x
           do {
               isContinue = false;
               System.out.println("x: ");
+              // add try ... catch... to handle non-integer
               try {
                 location[i][0] = sc.nextInt();
               } catch (Exception e) {
@@ -94,6 +98,7 @@ public class UserSetUp {
                   System.out.println("please enter again!");
               }
           } while (location[i][0] < 1 || location[i][0] > 10 || isContinue);
+          // y
           do {
               System.out.println("y: ");
               try {
@@ -119,9 +124,10 @@ public class UserSetUp {
       @return the boolean which decide whether to input again
     */
     public static boolean setUpOneShip(char[][] userBoard, int[][] location, boolean fail){
-
+      // when x is equal
       if (location[1][0] == location[0][0]) {
           int length = location[1][1] - location[0][1] + 1;
+          // when two ships' location conflicts, re-enter
           if (length != size.get(0)) {
               System.out.println("please re-enter the location");
               fail = true;
@@ -138,6 +144,7 @@ public class UserSetUp {
           }
 
       } else {
+        //when y is equal
           int length = location[1][0] - location[0][0] + 1;
           if (length != size.get(0)) {
               System.out.println("please re-enter the location");
