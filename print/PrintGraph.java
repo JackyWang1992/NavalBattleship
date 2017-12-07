@@ -25,7 +25,6 @@ public class PrintGraph{
       }
       System.out.println();
       for (int i = 0; i < board.length; i++){
-          
           if ( i == 9) {
               System.out.print(i + 1);
               System.out.print(" ");
