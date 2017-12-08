@@ -67,7 +67,7 @@ public class NavalBattleship {
             }
             printGraph(userBoard, pcBoard);
             setupShip();
-            //printGraph(userBoard, pcBoard);
+            printGraph(userBoard, pcBoard);
             fqcurRecord = userBoard;
             while (roundContinue) {
                 roundContinue = playOneStep();
